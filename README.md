@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Thom21200
+- 👋 Hi, I’m Thomas
 - Im a little french coder in python 
 - 🌱 I’m currently working on a project named "Time Wanderer"
 - 📫 How to reach me: Dm on discord tt_thoma#6939 or by [mail](mailto:thomwill212@gmail.com)
