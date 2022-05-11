@@ -1,0 +1,15 @@
+{ "webhooks": {
+    "fr": "",
+    "en": ""
+  },
+  "IDs": {
+    "bot": 910956853138182164,
+    "fr_channel": 908693689444999199,
+    "en_channel": 908708893608271874,
+    "logging_channel": 908694250085048335
+  },
+  "logs": {
+    "filename": "Discord_Bot",
+    "timestamps": true
+  }
+}
