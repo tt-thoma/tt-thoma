@@ -1,5 +1,9 @@
 Hello, every!
 
+Activity
+--------
+I'm not always active, but at the moment I'm working on projects on Scratch, on Python and on Arduino
+
 Coding
 ------
 I code in:
@@ -15,5 +19,7 @@ Contact
 How to contact me:
 
 **Discord**: tt_thoma#6939
+
+**Scratch**: https://scratch.mit.edu/users/tt_thoma
 
 **Mail**: thomwill212@gmail.com
