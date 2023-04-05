@@ -1,11 +1,19 @@
-Hey guys
-========
-My name is Thomas and I'm a little french coder 🇫🇷
+Hello, every!
 
 Coding
 ------
-I code a lot in python, but also can code in powershell or cmd
+I code in:
+- Python: games, automatic file/string processing
+- Scratch: making games and tools at the speed of light
+- Powershell: low-level command execution, to make shells
+- CMD (Windows command prompt): making no-setup low-level command execution on native windows
+- Minecraft commands: making custom maps on the famous game
+- C: mostly arduino-related stuff
 
 Contact
 -------
-How to reach me: Dm on discord [tt_thoma#6939](https://www.discord.com/app/channels/@me) or by [mail](mailto:thomwill212@gmail.com)
+How to contact me:
+
+**Discord**: tt_thoma#6939
+
+**Mail**: thomwill212@gmail.com
