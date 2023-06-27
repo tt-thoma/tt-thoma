@@ -21,7 +21,7 @@ Contact
 -------
 How to contact me:
 
-**Discord**: tt_thoma#6939
+**Discord**: @tt_thoma
 
 **Scratch**: https://scratch.mit.edu/users/tt_thoma
 
