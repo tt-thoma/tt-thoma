@@ -8,13 +8,13 @@ Currently learning GodotScript
 Coding
 ------
 I code in:
-- Python: games, automatic file/string processing
+- Python: games, automatic file/string processing, custom launcher project
 - Scratch: making games and tools at the speed of light
 - Powershell: low-level command execution, to make shells
 - CMD (Windows command prompt): making no-setup low-level command execution on native windows
-- Minecraft commands: making custom maps on the famous game
+- Minecraft commands: making custom maps and commands
 - C: mostly arduino-related stuff
-- GodoScript: Learning Godot
+- GodotScript: Learning Godot
 - Gamemaker Studio: Inactive
 
 Contact
