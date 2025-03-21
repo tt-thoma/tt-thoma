@@ -3,7 +3,7 @@ Hello, every!
 Activity
 --------
 I'm not always active, but at the moment I'm working on projects on Scratch, on Python and on Arduino.
-Currently learning GodotScript
+Currently working on a Godot game!
 
 Coding
 ------
@@ -14,7 +14,7 @@ I code in:
 - CMD (Windows command prompt): making no-setup low-level command execution on native windows
 - Minecraft commands: making custom maps and commands
 - C: mostly arduino-related stuff
-- GodotScript: Learning Godot
+- GDScript: Making games
 - Gamemaker Studio: Inactive
 
 Contact
