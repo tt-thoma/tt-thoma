@@ -3,7 +3,7 @@ Hello, every!
 Activity
 --------
 I'm not always active, but at the moment I'm working on projects on Scratch, on Python and on Arduino.
-Currently working on a Godot game!
+Currently working on a media player!
 
 Coding
 ------
