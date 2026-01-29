@@ -3,7 +3,7 @@ Hello, every!
 Activity
 --------
 I'm not always active, but at the moment I'm working on projects on Scratch, on Python and on Arduino.
-Currently working on a media player!
+Currently working on my website!
 
 Coding
 ------
@@ -25,4 +25,4 @@ How to contact me:
 
 **Scratch**: https://scratch.mit.edu/users/tt_thoma
 
-**Mail**: thomwill212@gmail.com
+**Mail**: thom@tt-thoma.net
