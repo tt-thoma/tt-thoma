@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+body {
+    font-family: "SN Pro", "Roboto", "Calibri", sans-serif;
+
+    --accent: rgb(52, 115, 233);
+    --accent2: rgb(136, 52, 233);
+    --accent3: #fcd838;
+    --accent4: #d6734f;
+    --accent5: rgb(46, 46, 46);
+}
+
+.line-sep {
+    border-top: double 3px gray;
+}
+
+.line-sep-soft {
+    border-top: solid 1px /* rgb(197, 197, 197)*/ gray;
+}
+
+header {
+    h1 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    marquee {
+        margin-bottom: 15px;
+    }
+    margin-bottom: 50px;
+}
+
+.title {
+    font-weight: lighter;
+}
+
+footer {
+    margin-top: 50px;
+    font-style: italic;
+    p { 
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+.content div {
+    margin: 5px;
+    padding: 5px;
+
+    border: solid 5px gray;
+    border-radius: 5px;
+}
+
+.content {
+    h1, h2 {
+        background-color: var(--accent5);
+        color: white;
+
+        padding: 15px;
+        text-align: center;
+    }
+}

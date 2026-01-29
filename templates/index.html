@@ -1,0 +1,44 @@
+<!-- tt_thoma -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello, world!</title>
+        <link rel="stylesheet" type="text/css" href="/static/style.css" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <script src="/static/main.js"></script>
+    </head>
+    <body
+        onload="onload()"
+        class="full"
+        onresize="set_width_adapt(document.body.clientWidth > (showing_full? 1200:1700))"
+    >
+        <div class="background"></div>
+        <div class="logo">// tt_thoma</div>
+        <div class="title_bar" id="title_bar" onclick="toggle_sidenav()"></div>
+        <div class="more">
+            <a href="https://github.com/tt-thoma/" target="_blank">
+                <button style="background-image: url('/static/logo/github.svg');"></button>
+            </a>
+            <a href="https://api.discordlabs.org/user?id=550229282325266432" target="_blank">
+                <button style="background-image: url('/static/logo/discord.png')"></button>
+            </a>
+            <a href="mailto:thom@tt-thoma.net" target="_blank">
+                <button style="background-image: url('/static/logo/mail.svg')"></button>
+            </a>
+        </div>
+        <div id="content" style="translate: 0 120vh">
+        </div>
+        <div id="sidenav">
+            <button>Welcome</button>
+            <button disabled="">Projects</button>
+            <button disabled="">About Me</button>
+            <div class="spacer"></div>
+            <button class="small">
+                <a href="/reader/">Reader version</a>
+            </button>
+        </div>
+        <div class="footnote" id="footnote">
+            Website built from scratch by tt_thoma
+        </div>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello, world!</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="/static/reader.css" />
+        <script src="https://webneko.net/n20171213.js"></script>
+        <script>NekoType="calico"</script>
+    </head>
+    <body>
+        <header>
+            <div class="line-sep"></div>
+
+            <img src="/static/logo/tt_thoma.png" width="100px" />
+            <h1>// tt_thoma &mdash; <span class="title">{{title}}</span></h1>
+            <marquee width="300px" direction="right">{{splash}}</marquee>
+
+            <div class="line-sep-soft"></div>
+
+            <p><strong>Navigation &nbsp;&gt;&gt;</strong>&nbsp; <a href="/reader/home/">Welcome</a> - Projects - About Me &nbsp;&mdash;&mdash;&nbsp; <a href="/">Normal mode</a></p>
+
+            <div class="line-sep"></div>
+        </header>
+        
+        <div class="content">
+            {{content|safe}}
+        </div>
+
+        <footer>
+            <div class="line-sep"></div>
+
+            <p>contact: 
+                <a href="https://github.com/tt-thoma/">tt-thoma (github)</a>,
+                <a href="https://api.discordlabs.org/user?id=550229282325266432">@tt_thoma (discord)</a>,
+                <a href="mailto:thom@tt-thoma.net">thom@tt-thoma.net (email)</a>
+            </p>
+
+            <div class="line-sep-soft"></div>
+
+            <p>
+                webneko by <a href="https://webneko.net/">https://webneko.net/</a>
+            </p>
+
+            <div class="line-sep"></div>
+        </footer>
+    </body>
+</html>
