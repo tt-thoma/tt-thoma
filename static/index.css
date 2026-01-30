@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
 html,
 body {
@@ -31,7 +31,7 @@ body {
         "sidenav footnote footnote";
 
     --snap: 500ms cubic-bezier(1, 0, 0, 1);
-    --font-family: "SN Pro", "Roboto", "Calibri", sans-serif;
+    --font-family: "Roboto Slab", "Courier New", Courier, monospace;
 
     --title-font-size: 60px;
     --content-font-size: 28px;
@@ -258,7 +258,7 @@ li {
         border-right: solid var(--border-color) 15px;
     }
 
-    div.compact {
+    div.small {
         font-size: var(--content-small-font-size);
         padding: 10px;
         h1, h2, h3 {
