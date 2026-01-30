@@ -10,8 +10,12 @@ body {
     padding: 0;
     overflow: hidden;
 }
-/* 430 + 360 + 380 */
+
 body {
+    * {
+        scrollbar-color: transparent transparent;
+    }
+
     font-family: var(--font-family);
     color: white;
     transition: var(--snap);
