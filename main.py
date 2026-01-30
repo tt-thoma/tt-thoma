@@ -69,7 +69,7 @@ def robots_txt():
 
 @app.errorhandler(Exception)
 def handle_exception(e):
-    if flask.request.endpoint == "reader_page":
+    if flask.request.path.startswith("/reader"):
         if isinstance(e, werkzeug.exceptions.HTTPException):
             code = e.code
             description = e.get_description().strip()
