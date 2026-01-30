@@ -1,15 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 body {
     font-family: "SN Pro", "Roboto", "Calibri", sans-serif;
 
-    --accent: rgb(52, 115, 233);
-    --accent2: rgb(136, 52, 233);
+    --accent: rgb(136, 52, 233);
+    --accent2: rgb(52, 115, 233);
     --accent3: #fcd838;
     --accent4: #d6734f;
     --accent5: rgb(46, 46, 46);
+
+    background-color: rgb(228, 228, 228);
+
+    padding: 0;
+    margin: 0;
+}
+
+body > * {
+    padding: 15px;
 }
 
 .line-sep {
@@ -21,6 +29,9 @@ body {
 }
 
 header {
+    background-color: white;
+    padding: 5px;
+
     h1 {
         margin-top: 0;
         margin-bottom: 0;
@@ -37,6 +48,7 @@ header {
 }
 
 footer {
+    background-color: white;
     margin-top: 50px;
     font-style: italic;
     p { 
@@ -45,20 +57,51 @@ footer {
     }
 }
 
-.content div {
-    margin: 5px;
-    padding: 5px;
-
-    border: solid 5px gray;
-    border-radius: 5px;
-}
-
 .content {
+    div {
+        margin: 5px;
+        padding: 15px;
+
+        border: solid 5px gray;
+        background-color: white;
+        /* border-radius: 15px;*/
+    }
+
+    div.small {
+        > * {
+            margin: 0;
+        }
+        h1, h2, h3 {
+            
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    }
+
+    div.bordered {
+        border-left: solid 10px var(--border-color);
+        border-right: solid 10px var(--border-color);
+    }
+
     h1, h2 {
+        background-image: url("/static/background.svg");
+        background-repeat: repeat;
+        background-position: 46px 37px;
+
         background-color: var(--accent5);
         color: white;
 
         padding: 15px;
         text-align: center;
+    }
+
+    h3 {
+        padding: 10px;
+        background-color: darkgray;
+        color: white;
+    }
+    
+    a {
+        margin-right: 10px;
     }
 }
