@@ -5,20 +5,22 @@
 html,
 body {
     width: 100%;
+
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow: hidden;
 }
-
+/* 430 + 360 + 380 */
 body {
     font-family: var(--font-family);
     color: white;
-    transition: translate 500ms cubic-bezier(1, 0, 0, 1);
+    transition: var(--snap);
+    transition-property: translate;
 
     display: grid;
-    grid-template-columns: 300px 1.7fr 320px;
-    grid-template-rows: 0.4fr 1.4fr 1.2fr 50px;
+    grid-template-columns: 360px 1.7fr 380px;
+    grid-template-rows: 180px 1.4fr 1.2fr 60px;
     grid-auto-rows: 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
@@ -29,7 +31,14 @@ body {
         "sidenav content content"
         "sidenav footnote footnote";
 
+    --snap: 500ms cubic-bezier(1, 0, 0, 1);
     --font-family: "SN Pro", "Roboto", "Calibri", sans-serif;
+
+    --title-font-size: 60px;
+    --content-font-size: 28px;
+    --content-small-font-size: 23px;
+    --content-tiny-font-size: 18px;
+
     --accent: rgb(52, 115, 233);
     --accent2: rgb(136, 52, 233);
     --accent3: #fcd838;
@@ -37,26 +46,28 @@ body {
     --accent5: rgb(46, 46, 46);
 }
 
+.background {
+    z-index: -1;
+}
+
+#content {
+    z-index: 0;
+}
+
+.logo, .title_bar, #sidenav, .footnote {
+    z-index: 1;
+}
+
+#more_top {
+    z-index: 2;
+}
+
 body.full {
     translate: 0 0;
 }
 
 body.stripped {
-    width: calc(100% + 300px);
-}
-
-#content a {
-    background-color: white;
-    color: var(--accent4);
-    padding: 5px;
-    margin: 5px;
-    text-decoration: none;
-    text-align: center;
-    border: var(--accent4) 3px dashed;
-}
-
-#content a:visited {
-    color: var(--accent2);
+    width: calc(100% + 360px);
 }
 
 button {
@@ -105,30 +116,28 @@ li {
         background-position: 0 0;
     }
     to {
-        background-position: 50px 50px;
+        background-position: 75px 75px;
     }
 }
 
 .background {
-    z-index: -1;
     position: absolute;
     width: 100%;
     height: 100%;
 
     background-image: url("background.svg");
     background-color: var(--accent5);
-    background-size: 50px 50px;
+    background-size: 75px 75px;
 
     animation: slide 5s linear infinite;
 }
 
 .logo,
 .title_bar {
-    z-index: 1;
     display: flex;
     align-items: center;
     font-family: "Nabla";
-    font-size: 50px;
+    font-size: var(--title-font-size);
     background-color: var(--accent);
 }
 
@@ -137,46 +146,43 @@ li {
 }
 
 .title_bar {
-    grid-area: title_bar;
+    grid-area: title_bar / title_bar / more / more;
+
     text-align: center;
     padding-left: 50px;
+
     span {
         transition: all 20ms linear;
     }
 }
 
-.more {
-    z-index: 1;
-    grid-area: more;
-
+#more_top {
     display: flex;
-    background-color: var(--accent);
 
     align-items: center;
     text-align: center;
 
-    a {
-        background-color: transparent;
-        padding: 0;
-        margin: 0;
-        border: none;
+    transition: var(--snap);
+    transition-property: translate;
+}
 
-        button {
-            width: 80px;
+#more_top {
+    grid-area: more;
+    
+    a button {
+        width: 95px;
 
-            margin: 25px;
-            margin-left: 10px;
-            margin-right: 10px;
-            padding: 15px;
-            aspect-ratio: 1;
+        margin: 26px;
+        margin-left: 12px;
+        margin-right: 12px;
+        padding: 18px;
+        aspect-ratio: 1;
 
-            border-radius: 999px;
-        }
+        border-radius: 999px;
     }
 }
 
 #sidenav {
-    z-index: 1;
     grid-area: sidenav;
     overflow-y: scroll;
     display: flex;
@@ -186,13 +192,13 @@ li {
 
     button {
         font-weight: bold;
-        font-size: 20px;
+        font-size: 24px;
 
         border-radius: 10px;
         flex: 0 1;
         min-height: 80px;
         max-height: 80px;
-        padding: 20px;
+        /* padding: 20px; */
         margin: 10px;
     }
 
@@ -206,19 +212,38 @@ li {
 }
 
 #content {
+    grid-area: content / content / footnote / footnote;
+
     display: flex;
     flex-direction: column;
-    z-index: 0;
-    transition: all 1s cubic-bezier(1,0,0,1);
+    transition: var(--snap);
+    transition-property: translate;
+
     background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.5) 0%,
         rgba(0, 0, 0, 0) 100%
     );
-    grid-area: content;
-    font-size: 24px;
+
+    font-size: var(--content-font-size);
 
     overflow-y: scroll;
+
+    a {
+        color: var(--accent4);
+        padding: 5px;
+        margin: 5px;
+        text-decoration: none;
+        text-align: center;
+
+        border-left: var(--accent4) 3px solid;
+        border-bottom: var(--accent4) 3px solid;
+        background-color: white;
+    }
+
+    a:visited {
+        color: var(--accent2);
+    }
 
     div {
         background-color: rgba(255, 255, 255, 0.25);
@@ -234,9 +259,9 @@ li {
         border-right: solid var(--border-color) 15px;
     }
 
-    div.small {
-        font-size: 15px;
-        padding: 5px;
+    div.compact {
+        font-size: var(--content-small-font-size);
+        padding: 10px;
         h1, h2, h3 {
             padding: 5px;
         }

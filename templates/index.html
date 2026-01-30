@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="initial-scale=1" />
         <title>Hello, world!</title>
         <link rel="stylesheet" type="text/css" href="/static/style.css" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -10,12 +11,12 @@
     <body
         onload="onload()"
         class="full"
-        onresize="set_width_adapt(document.body.clientWidth > (showing_full? 1200:1700))"
+        onresize="set_width_adapt()"
     >
         <div class="background"></div>
         <div class="logo">// tt_thoma</div>
         <div class="title_bar" id="title_bar" onclick="toggle_sidenav()"></div>
-        <div class="more">
+        <div id="more_top">
             <a href="https://github.com/tt-thoma/" target="_blank">
                 <button style="background-image: url('/static/logo/github.svg');"></button>
             </a>
@@ -33,8 +34,19 @@
             <button disabled="">Projects</button>
             <button disabled="">About Me</button>
             <div class="spacer"></div>
-            <button class="small">
-                <a href="/reader/">Reader version</a>
+            <!-- div id="more_bottom">
+                <a href="https://github.com/tt-thoma/" target="_blank">
+                    <button style="background-image: url('/static/logo/github.svg');"></button>
+                </a>
+                <a href="https://api.discordlabs.org/user?id=550229282325266432" target="_blank">
+                    <button style="background-image: url('/static/logo/discord.png')"></button>
+                </a>
+                <a href="mailto:thom@tt-thoma.net" target="_blank">
+                    <button style="background-image: url('/static/logo/mail.svg')"></button>
+                </a>
+            </div -->
+            <button>
+                <a href="/reader/">Reader mode</a>
             </button>
         </div>
         <div class="footnote" id="footnote">

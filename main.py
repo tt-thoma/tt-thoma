@@ -95,4 +95,4 @@ def handle_exception(e):
     return werkzeug.exceptions.InternalServerError()
 
 if __name__ == "__main__":
-    app.run(host="localhost", debug=True, port=80)
+    app.run(host="0.0.0.0", debug=True, port=80)
