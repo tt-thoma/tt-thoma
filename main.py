@@ -6,7 +6,7 @@ import traceback
 
 # Global imports
 import flask
-import flask_ipban
+# import flask_ipban
 import json
 import os
 import werkzeug.exceptions
@@ -15,15 +15,15 @@ app = flask.Flask(
     __name__
 )
 
-ip_ban = flask_ipban.IpBan(
-    ban_count=3,
-    ban_seconds=3600*24,  # 24 hours
-    persist=True,
-    record_dir="../ipban_records",
-    ipc=True,
-)
-ip_ban.init_app(app)
-ip_ban.load_nuisances()
+# ip_ban = flask_ipban.IpBan(
+#    ban_count=3,
+#    ban_seconds=3600*24,  # 24 hours
+#    persist=True,
+#    record_dir="../ipban_records",
+#    ipc=True,
+# )
+# ip_ban.init_app(app)
+# ip_ban.load_nuisances()
 
 @app.route("/")
 def index():
