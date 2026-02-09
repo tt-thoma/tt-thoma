@@ -24,6 +24,7 @@ var title_req_id = 0;
 
 function onload() {
     document.body.onresize();
+    set_title("Loading...", true);
     load_content_page("home", true);
     setInterval(change_footnote, 30_000);
 }
@@ -51,7 +52,7 @@ function stop_timer() {
     }
 }
 
-async function set_title(title) {
+async function set_title(title, immediate) {
     title_req_id++;
     var title_id = title_req_id;
 
@@ -60,8 +61,8 @@ async function set_title(title) {
             return;
         }
         title_bar.children[0].remove();
-
-        await sleep(50);
+        
+        if (!immediate) { await sleep(50); }
     }
 
     stop_timer();
@@ -72,11 +73,13 @@ async function set_title(title) {
     }
     title_bar.appendChild(letter);
 
-    for (let i = 0; i < 2; i++) {
-        letter.innerText = "|";
-        await sleep(350);
-        letter.innerText = "";
-        await sleep(350);
+    if (!immediate) {
+        for (let i = 0; i < 2; i++) {
+            letter.innerText = "|";
+            await sleep(350);
+            letter.innerText = "";
+            await sleep(350);
+        }
     }
 
     if (title_req_id != title_id) {
@@ -86,7 +89,8 @@ async function set_title(title) {
 
     start_timer();
     for (let i = 0; i < title.length; i++) {
-        await sleep(50);
+        if (!immediate) { await sleep(50); }
+
         var letter = document.createElement("span");
         if (!title.charAt(i).trim()) {
             letter.style.width = "30px";
