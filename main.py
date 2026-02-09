@@ -2,28 +2,29 @@
 # -*- encoding: utf-8 -*-
 # tt_thoma
 # I keep forgetting how flask works
-import traceback
 
 # Global imports
 import flask
-# import flask_ipban
+import flask_ipban
 import json
 import os
+import sys
+import traceback
 import werkzeug.exceptions
 
 app = flask.Flask(
     __name__
 )
 
-# ip_ban = flask_ipban.IpBan(
-#    ban_count=3,
-#    ban_seconds=3600*24,  # 24 hours
-#    persist=True,
-#    record_dir="../ipban_records",
-#    ipc=True,
-# )
-# ip_ban.init_app(app)
-# ip_ban.load_nuisances()
+ip_ban = flask_ipban.IpBan(
+    ban_count=5,
+    ban_seconds=3600*2,  # 2 hours
+    persist=True,
+    record_dir="../ipban_records",
+    ipc=True,
+)
+ip_ban.init_app(app)
+ip_ban.load_nuisances()
 
 @app.route("/")
 def index():
@@ -35,6 +36,12 @@ def reader_base():
 
 @app.route("/reader/<page>/")
 def reader_page(page):
+    print(page)
+
+    if ".." in page:
+        ip_ban.add()
+        flask.abort(403)
+
     if not os.path.exists(f"blog/{page}.json"):
         flask.abort(404)
 
@@ -53,10 +60,18 @@ def reader_page(page):
 
 @app.route("/blog/<page>/page/")
 def blog(page):
+    if ".." in page:
+        ip_ban.add()
+        flask.abort(403)
+
     return flask.send_from_directory("blog", f"{page}.html")
 
 @app.route("/blog/<page>/")
 def blog_title(page):
+    if ".." in page:
+        ip_ban.add()
+        flask.abort(403)
+
     return flask.send_from_directory("blog", f"{page}.json")
 
 @app.route("/favicon.ico")
@@ -95,4 +110,7 @@ def handle_exception(e):
     return werkzeug.exceptions.InternalServerError()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True, port=80)
+    if sys.platform in ("linux", "linux2"):
+        app.run(host="localhost", debug=True, port=5000)
+    else:
+        app.run(host="localhost", debug=True, port=80)

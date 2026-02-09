@@ -14,14 +14,15 @@
         onresize="set_width_adapt()"
     >
         <div class="background"></div>
-        <div class="logo">// tt_thoma</div>
-        <div class="title_bar" id="title_bar" onclick="toggle_sidenav()"></div>
+        <div class="logo_background"></div>
+        <div id="logo" onclick="toggle_sidenav()">// tt_thoma</div>
+        <div class="title_bar gradiented" id="title_bar" onclick="toggle_sidenav()"></div>
         <div id="more_top">
             <a href="https://github.com/tt-thoma/" target="_blank">
                 <button style="background-image: url('/static/logo/github.svg');"></button>
             </a>
-            <a href="https://api.discordlabs.org/user?id=550229282325266432" target="_blank">
-                <button style="background-image: url('/static/logo/discord.png')"></button>
+            <a>
+                <button style="background-image: url('/static/logo/discord.png')" disabled=""></button>
             </a>
             <a href="mailto:thom@tt-thoma.net" target="_blank">
                 <button style="background-image: url('/static/logo/mail.svg')"></button>
@@ -29,25 +30,24 @@
         </div>
         <div id="content" style="translate: 0 120vh">
         </div>
-        <div id="sidenav">
+        <div id="sidenav" class="gradiented">
             <button>Welcome</button>
             <button disabled="">Projects</button>
             <button disabled="">About Me</button>
-            <div class="spacer"></div>
-            <!-- div id="more_bottom">
-                <a href="https://github.com/tt-thoma/" target="_blank">
-                    <button style="background-image: url('/static/logo/github.svg');"></button>
-                </a>
-                <a href="https://api.discordlabs.org/user?id=550229282325266432" target="_blank">
-                    <button style="background-image: url('/static/logo/discord.png')"></button>
-                </a>
-                <a href="mailto:thom@tt-thoma.net" target="_blank">
-                    <button style="background-image: url('/static/logo/mail.svg')"></button>
-                </a>
-            </div -->
-            <button>
-                <a href="/reader/">Reader mode</a>
-            </button>
+        </div>
+        <div id="more_bottom" style="translate: -320px 0">
+            <a href="https://github.com/tt-thoma/" target="_blank">
+                <button style="background-image: url('/static/logo/github.svg');"></button>
+            </a>
+            <a>
+                <button style="background-image: url('/static/logo/discord.png')" disabled=""></button>
+            </a>
+            <a href="mailto:thom@tt-thoma.net" target="_blank">
+                <button style="background-image: url('/static/logo/mail.svg')"></button>
+            </a>
+        </div>
+        <div class="more_reader">
+                <a href="/reader/">-- Reader mode --</a>
         </div>
         <div class="footnote" id="footnote">
             Website built from scratch by tt_thoma

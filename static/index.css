@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
 
 html,
 body {
-    width: 100%;
+    width: 100vw;
 
-    height: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -22,25 +23,28 @@ body {
     transition-property: translate;
 
     display: grid;
-    grid-template-columns: 360px 1.7fr 380px;
-    grid-template-rows: 180px 1.4fr 1.2fr 60px;
+    grid-template-columns: 300px 1.7fr 320px;
+    grid-template-rows: 110px 100px 1.4fr 1.2fr 75px 50px;
     grid-auto-rows: 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
 
     grid-template-areas:
-        "logo title_bar more"
+        "logo title_bar more_top"
+        "logo content content"
         "sidenav content content"
         "sidenav content content"
-        "sidenav footnote footnote";
+        "more_bottom content content"
+        "reader footnote footnote";
 
     --snap: 500ms cubic-bezier(1, 0, 0, 1);
     --font-family: "Roboto Slab", "Courier New", Courier, monospace;
+    --button-font-family: 'Courier New', Courier, monospace;
 
-    --title-font-size: 60px;
-    --content-font-size: 28px;
-    --content-small-font-size: 23px;
-    --content-tiny-font-size: 18px;
+    --title-font-size: 48px;
+    --content-font-size: 22px;
+    --content-small-font-size: 18px;
+    --content-tiny-font-size: 14px;
 
     --accent: rgb(136, 52, 233);
     --accent2: rgb(52, 115, 233);
@@ -57,11 +61,11 @@ body {
     z-index: 0;
 }
 
-.logo, .title_bar, #sidenav, .footnote {
+#logo, .title_bar, #sidenav, .footnote {
     z-index: 1;
 }
 
-#more_top {
+#more_top, #more_bottom {
     z-index: 2;
 }
 
@@ -70,12 +74,14 @@ body.full {
 }
 
 body.stripped {
-    width: calc(100% + 360px);
+    width: calc(100% + 300px);
+}
+
+button, a {
+    font-family: var(--button-font-family);
 }
 
 button {
-    font-family: var(--font-family);
-
     border: var(--accent4) 0 solid;
     background-position: center center;
     background-repeat: no-repeat;
@@ -124,10 +130,8 @@ li {
 }
 
 .background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-
+    grid-area: content / content / footnote / footnote;
+    
     background-image: url("background.svg");
     background-color: var(--accent5);
     background-size: 75px 75px;
@@ -135,45 +139,54 @@ li {
     animation: slide 5s linear infinite;
 }
 
-.logo,
+
+.logo_background {
+    grid-area: logo;
+    
+    background-image: url("/static/logo/tt_thoma.png");
+    background-size: cover;
+    background-position: center center;
+}
+
+#logo,
 .title_bar {
     display: flex;
     align-items: center;
     font-family: "Nabla";
     font-size: var(--title-font-size);
-    background-color: var(--accent);
 }
 
-.logo {
+#logo {
     grid-area: logo;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .title_bar {
-    grid-area: title_bar / title_bar / more / more;
+    grid-area: title_bar / title_bar / more_top / more_top;
 
     text-align: center;
-    padding-left: 50px;
+    padding-left: 30px;
 
     span {
         transition: all 20ms linear;
     }
 }
 
-#more_top {
-    display: flex;
-
-    align-items: center;
-    text-align: center;
-
+#more_top, #more_bottom {
     transition: var(--snap);
     transition-property: translate;
 }
 
 #more_top {
-    grid-area: more;
-    
+    grid-area: more_top;
+
+    display: flex;
+
+    align-items: center;
+    text-align: center;
+
     a button {
-        width: 95px;
+        height: 80px;
 
         margin: 26px;
         margin-left: 12px;
@@ -185,19 +198,23 @@ li {
     }
 }
 
-#sidenav {
-    grid-area: sidenav;
-    overflow-y: scroll;
+#sidenav, .more_reader {
     display: flex;
     flex-direction: column;
+}
+
+#sidenav {
+    grid-area: sidenav / sidenav / more_bottom / more_bottom;
     background-color: var(--accent);
+    overflow-y: scroll;
     padding: 20px;
+
+    padding-bottom: 75px;
 
     button {
         font-weight: bold;
-        font-size: 24px;
+        font-size: 18px;
 
-        border-radius: 10px;
         flex: 0 1;
         min-height: 80px;
         max-height: 80px;
@@ -214,6 +231,50 @@ li {
     }
 }
 
+#more_bottom {
+    grid-area: more_bottom;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+
+    a {
+        flex: 1 1;
+        height: 90%;
+
+        margin-left: 10px;
+        margin-right: 10px;
+
+        button {
+            width: 100%;
+            height: 90%;
+            border-radius: 999px;
+        }
+    }
+}
+
+.more_reader {
+    grid-area: reader;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+
+    a {
+        flex: 0 1;
+        color: black;
+    }
+
+    a:hover {
+        color: var(--accent4)
+    }
+}
+
 #content {
     grid-area: content / content / footnote / footnote;
 
@@ -221,6 +282,8 @@ li {
     flex-direction: column;
     transition: var(--snap);
     transition-property: translate;
+
+    margin-bottom: 50px;
 
     background: linear-gradient(
         180deg,
@@ -287,3 +350,14 @@ li {
 
     background-color: var(--accent5);
 }
+
+#sidenav, .title_bar {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent4) 100%);
+    background-size: 200% 200%;
+    transition: all 1s ease-in-out; 
+}
+
+#sidenav:hover, .title_bar:hover {
+    background-size: 100% 100%;
+}
+
