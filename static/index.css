@@ -13,6 +13,12 @@
 }
 
 /* Base */
+html {
+    * {
+        scrollbar-color: transparent transparent;
+    }
+}
+
 html,
 body,
 #wrapper {
@@ -21,8 +27,6 @@ body,
 
     margin: 0;
     padding: 0;
-
-    overflow: hidden;
 }
 
 /* Layering */
@@ -88,9 +92,7 @@ li {
 
 /* Elements */
 #wrapper {
-    * {
-        scrollbar-color: transparent transparent;
-    }
+    overflow: hidden;
 
     color: white;
     font-family: var(--font-family);
