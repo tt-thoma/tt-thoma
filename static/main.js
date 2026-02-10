@@ -8,7 +8,7 @@ const splashes = [
     "Is someone even looking at these?",
     "That cake is 100% real",
     "Hey chatgpt, center that div",
-    "This website is very mobile compatible,,,! besidesthatweirdresizethingicantwrapmheadaround",
+    "I fix the website for the mobile user!!",
     "\"AI will take your job\" yeah well can AI type this? Taumatawhakatangihangakoauauotamateaturipokakapikimaungahoronukupokaiwhenuakitanatahu",
     "There is a typo in the last splash. I win"
 ];
@@ -22,17 +22,19 @@ var timer = 0;
 var timer_id = null;
 var title_req_id = 0;
 
+annoying_popup.remove();
+
 function onload() {
     document.body.onresize();
     set_title("Loading...", true);
-    load_content_page("home", true);
+    load_content_page("home");
     setInterval(change_footnote, 30_000);
 }
 
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
-// 1070px min
+
 function start_timer() {
     stop_timer();
 
@@ -151,36 +153,21 @@ function set_width_adapt() {
         showing_full = (size > 1700);
     }
 
-    set_superspace(size < 930);
-
     showing_sidenav = false;
 
     if (showing_full) {
-        document.body.style.translate = "0 0";
-        title_bar.style.cursor = "";
-        logo.style.cursor = "";
-        document.body.classList = ["full"];
+        wrapper.style.translate = "0 0";
+        wrapper.classList = "full";
     } else {
-        document.body.style.translate = "-300px 0";
-        title_bar.style.cursor = "pointer";
-        logo.style.cursor = "pointer";
-        document.body.classList = ["stripped"];
+        wrapper.style.translate = "-300px 0";
+        wrapper.classList = "stripped";
+        set_superspace(size < 930);
     }
 }
 
 function set_superspace(enabled) {
     if (enabled) {
-        more_top.style.translate = "0 -180px";
-        more_bottom.style.translate = "0 0";
-        document.body.style.setProperty("--content-font-size", "20px");
-        document.body.style.setProperty("--content-small-font-size", "18px");
-        document.body.style.setProperty("--content-tiny-font-size", "11px");
-    } else {
-        more_top.style.translate = "0 0";
-        more_bottom.style.translate = "-320px 0";
-        document.body.style.setProperty("--content-font-size", "22px");
-        document.body.style.setProperty("--content-small-font-size", "18px");
-        document.body.style.setProperty("--content-tiny-font-size", "14px");
+        wrapper.classList += " superspace";
     }
 }
 
@@ -191,8 +178,8 @@ function toggle_sidenav() {
 
     showing_sidenav = !showing_sidenav;
     if (showing_sidenav) {
-        document.body.style.translate = "0 0";
+        wrapper.style.translate = "0 0";
     } else {
-        document.body.style.translate = "-300px 0";
+        wrapper.style.translate = "-300px 0";
     }
 }

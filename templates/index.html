@@ -13,44 +13,47 @@
         class="full"
         onresize="set_width_adapt()"
     >
-        <div class="background"></div>
-        <div class="logo_background"></div>
-        <div id="logo" onclick="toggle_sidenav()">// tt_thoma</div>
-        <div class="title_bar gradiented" id="title_bar" onclick="toggle_sidenav()"></div>
-        <div id="more_top">
-            <a href="https://github.com/tt-thoma/" target="_blank">
-                <button style="background-image: url('/static/logo/github.svg');"></button>
-            </a>
-            <a>
-                <button style="background-image: url('/static/logo/discord.png')" disabled=""></button>
-            </a>
-            <a href="mailto:thom@tt-thoma.net" target="_blank">
-                <button style="background-image: url('/static/logo/mail.svg')"></button>
-            </a>
-        </div>
-        <div id="content" style="translate: 0 120vh">
-        </div>
-        <div id="sidenav" class="gradiented">
-            <button>Welcome</button>
-            <button disabled="">Projects</button>
-            <button disabled="">About Me</button>
-        </div>
-        <div id="more_bottom" style="translate: -320px 0">
-            <a href="https://github.com/tt-thoma/" target="_blank">
-                <button style="background-image: url('/static/logo/github.svg');"></button>
-            </a>
-            <a>
-                <button style="background-image: url('/static/logo/discord.png')" disabled=""></button>
-            </a>
-            <a href="mailto:thom@tt-thoma.net" target="_blank">
-                <button style="background-image: url('/static/logo/mail.svg')"></button>
-            </a>
-        </div>
-        <div class="more_reader">
-                <a href="/reader/">-- Reader mode --</a>
-        </div>
-        <div class="footnote" id="footnote">
-            Website built from scratch by tt_thoma
+        <div id="wrapper">
+            <div class="background"></div>
+            <div class="logo_background"></div>
+            <div class="logo" id="logo" onclick="toggle_sidenav()">// tt_thoma</div>
+            <div class="title_bar" id="title_bar" onclick="toggle_sidenav()"></div>
+            <div class="more_top" id="more_top">
+                <a href="https://github.com/tt-thoma/" target="_blank">
+                    <button style="background-image: url('/static/logo/github.svg');"></button>
+                </a>
+                <a>
+                    <button style="background-image: url('/static/logo/discord.png')" disabled=""></button>
+                </a>
+                <a href="mailto:thom@tt-thoma.net" target="_blank">
+                    <button style="background-image: url('/static/logo/mail.svg')"></button>
+                </a>
+            </div>
+            <div class="content" id="content">
+                <div>Loading... If JS is disabled, or if your connection is slow, consider using the reader mode: <a href="/reader/">Reader Mode</a></div>
+            </div>
+            <div class="sidenav" id="sidenav">
+                <button>Welcome</button>
+                <button disabled="">Projects</button>
+                <button disabled="">About Me</button>
+            </div>
+            <div class="more_bottom" id="more_bottom">
+                <a href="https://github.com/tt-thoma/" target="_blank">
+                    <button style="background-image: url('/static/logo/github.svg');"></button>
+                </a>
+                <a>
+                    <button style="background-image: url('/static/logo/discord.png')" disabled=""></button>
+                </a>
+                <a href="mailto:thom@tt-thoma.net" target="_blank">
+                    <button style="background-image: url('/static/logo/mail.svg')"></button>
+                </a>
+            </div>
+            <div class="more_reader">
+                    <a href="/reader/">-- Reader mode --</a>
+            </div>
+            <div class="footnote" id="footnote">
+                Website built from scratch by tt_thoma
+            </div>
         </div>
     </body>
 </html>

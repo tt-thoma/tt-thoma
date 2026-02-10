@@ -1,83 +1,49 @@
+/* Outside fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
 
+/* Animations */
+@keyframes slide {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 75px 75px;
+    }
+}
+
+/* Base */
 html,
-body {
+body,
+#wrapper {
     width: 100vw;
-
     height: 100vh;
+
     margin: 0;
     padding: 0;
+
     overflow: hidden;
 }
 
-body {
-    * {
-        scrollbar-color: transparent transparent;
-    }
-
-    font-family: var(--font-family);
-    color: white;
-    transition: var(--snap);
-    transition-property: translate;
-
-    display: grid;
-    grid-template-columns: 300px 1.7fr 320px;
-    grid-template-rows: 110px 100px 1.4fr 1.2fr 75px 50px;
-    grid-auto-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-
-    grid-template-areas:
-        "logo title_bar more_top"
-        "logo content content"
-        "sidenav content content"
-        "sidenav content content"
-        "more_bottom content content"
-        "reader footnote footnote";
-
-    --snap: 500ms cubic-bezier(1, 0, 0, 1);
-    --font-family: "Roboto Slab", "Courier New", Courier, monospace;
-    --button-font-family: 'Courier New', Courier, monospace;
-
-    --title-font-size: 48px;
-    --content-font-size: 22px;
-    --content-small-font-size: 18px;
-    --content-tiny-font-size: 14px;
-
-    --accent: rgb(136, 52, 233);
-    --accent2: rgb(52, 115, 233);
-    --accent3: #fcd838;
-    --accent4: #d6734f;
-    --accent5: rgb(46, 46, 46);
-}
-
+/* Layering */
 .background {
     z-index: -1;
 }
 
-#content {
+.content {
     z-index: 0;
 }
 
-#logo, .title_bar, #sidenav, .footnote {
+.logo, .title_bar, .sidenav, .footnote {
     z-index: 1;
 }
 
-#more_top, #more_bottom {
+.more_top, .more_bottom {
     z-index: 2;
 }
 
-body.full {
-    translate: 0 0;
-}
-
-body.stripped {
-    width: calc(100% + 300px);
-}
-
-button, a {
+/* Tags */
+a, button {
     font-family: var(--button-font-family);
 }
 
@@ -120,15 +86,77 @@ li {
     margin: 15px;
 }
 
-@keyframes slide {
-    from {
-        background-position: 0 0;
+/* Elements */
+#wrapper {
+    * {
+        scrollbar-color: transparent transparent;
     }
-    to {
-        background-position: 75px 75px;
+
+    color: white;
+    font-family: var(--font-family);
+    
+    transition: var(--snap);
+    transition-property: translate;
+
+    display: grid;
+    grid-template-columns: 300px 1.7fr 320px;
+    grid-template-rows: 110px 100px 1.4fr 1.2fr 75px 50px;
+    grid-auto-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+
+    grid-template-areas:
+        "logo title_bar more_top"
+        "logo content content"
+        "sidenav content content"
+        "sidenav content content"
+        "more_bottom content content"
+        "reader footnote footnote";
+
+    --snap: 500ms cubic-bezier(1, 0, 0, 1);
+    --font-family: "Roboto Slab", "Courier New", Courier, monospace;
+    --button-font-family: 'Courier New', Courier, monospace;
+
+    --title-font-size: 48px;
+    --content-font-size: 22px;
+    --content-small-font-size: 18px;
+    --content-tiny-font-size: 14px;
+
+    --accent: rgb(136, 52, 233);
+    --accent2: rgb(52, 115, 233);
+    --accent3: #fcd838;
+    --accent4: #d6734f;
+    --accent5: rgb(46, 46, 46);
+}
+
+/*-- Layout changes --*/
+#wrapper.full {
+    translate: 0 0;
+}
+
+#wrapper.stripped {
+    width: calc(100% + 300px);
+
+    .title_bar, .logo {
+        cursor: pointer;
     }
 }
 
+#wrapper.superspace {
+    --title-font-size: 48px;
+    --content-font-size: 20px;
+    --content-small-font-size: 18px;
+    --content-tiny-font-size: 11px;
+
+    .more_top {
+        translate: 0 -180px;
+    }
+    .more_bottom {
+        translate: 0 0;
+    }
+}
+
+/*-- Background --*/
 .background {
     grid-area: content / content / footnote / footnote;
     
@@ -139,7 +167,7 @@ li {
     animation: slide 5s linear infinite;
 }
 
-
+/*-- Logo --*/
 .logo_background {
     grid-area: logo;
     
@@ -148,7 +176,7 @@ li {
     background-position: center center;
 }
 
-#logo,
+.logo,
 .title_bar {
     display: flex;
     align-items: center;
@@ -156,11 +184,12 @@ li {
     font-size: var(--title-font-size);
 }
 
-#logo {
+.logo {
     grid-area: logo;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+/*-- Top bar --*/
 .title_bar {
     grid-area: title_bar / title_bar / more_top / more_top;
 
@@ -172,12 +201,12 @@ li {
     }
 }
 
-#more_top, #more_bottom {
+.more_top, .more_bottom {
     transition: var(--snap);
     transition-property: translate;
 }
 
-#more_top {
+.more_top {
     grid-area: more_top;
 
     display: flex;
@@ -198,12 +227,13 @@ li {
     }
 }
 
-#sidenav, .more_reader {
+/*-- Sidenav --*/
+.sidenav, .more_reader {
     display: flex;
     flex-direction: column;
 }
 
-#sidenav {
+.sidenav {
     grid-area: sidenav / sidenav / more_bottom / more_bottom;
     background-color: var(--accent);
     overflow-y: scroll;
@@ -231,8 +261,10 @@ li {
     }
 }
 
-#more_bottom {
+.more_bottom {
     grid-area: more_bottom;
+
+    translate: -320px 0;
 
     display: flex;
     flex-direction: row;
@@ -275,7 +307,8 @@ li {
     }
 }
 
-#content {
+/*-- Content area --*/
+.content {
     grid-area: content / content / footnote / footnote;
 
     display: flex;
@@ -283,7 +316,7 @@ li {
     transition: var(--snap);
     transition-property: translate;
 
-    margin-bottom: 50px;
+    padding-bottom: 50px;
 
     background: linear-gradient(
         180deg,
@@ -351,13 +384,13 @@ li {
     background-color: var(--accent5);
 }
 
-#sidenav, .title_bar {
+/* Hover animation */
+.sidenav, .title_bar {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent4) 100%);
     background-size: 200% 200%;
     transition: all 1s ease-in-out; 
 }
 
-#sidenav:hover, .title_bar:hover {
+.sidenav:hover, .title_bar:hover {
     background-size: 100% 100%;
 }
-
