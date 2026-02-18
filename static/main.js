@@ -22,7 +22,12 @@ var timer = 0;
 var timer_id = null;
 var title_req_id = 0;
 
-annoying_popup.remove();
+var loader_id;
+
+loader_id = setInterval(() => {
+    try { onload(); clearInterval(loader_id); }
+    catch {}
+}, 500)
 
 function onload() {
     document.body.onresize();
@@ -153,13 +158,12 @@ function set_width_adapt() {
         showing_full = (size > 1700);
     }
 
-    showing_sidenav = false;
-
     if (showing_full) {
+        showing_sidenav = false;
         wrapper.style.translate = "0 0";
         wrapper.classList = "full";
     } else {
-        wrapper.style.translate = "-300px 0";
+        update_sidenav();
         wrapper.classList = "stripped";
         set_superspace(size < 930);
     }
@@ -171,15 +175,23 @@ function set_superspace(enabled) {
     }
 }
 
+function update_sidenav() {
+    if (showing_full) {
+        return;
+    }
+
+    if (showing_sidenav) {
+        wrapper.style.translate = "0 0";
+    } else {
+        wrapper.style.translate = "-300px 0";
+    }
+}
+
 function toggle_sidenav() {
     if (showing_full) {
         return;
     }
 
     showing_sidenav = !showing_sidenav;
-    if (showing_sidenav) {
-        wrapper.style.translate = "0 0";
-    } else {
-        wrapper.style.translate = "-300px 0";
-    }
+    update_sidenav();
 }

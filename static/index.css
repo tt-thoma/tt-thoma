@@ -1,7 +1,3 @@
-/* Outside fonts*/
-@import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
-
 /* Animations */
 @keyframes slide {
     from {
@@ -27,6 +23,8 @@ body,
 
     margin: 0;
     padding: 0;
+    
+    overflow: hidden;
 }
 
 /* Layering */
@@ -92,8 +90,6 @@ li {
 
 /* Elements */
 #wrapper {
-    overflow: hidden;
-
     color: white;
     font-family: var(--font-family);
     
