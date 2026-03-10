@@ -32,7 +32,7 @@ def index():
 
 @app.route("/reader/")
 def reader_base():
-    return flask.redirect("/reader/home/")
+    return flask.redirect("/reader/welcome/")
 
 @app.route("/reader/<page>/")
 def reader_page(page):

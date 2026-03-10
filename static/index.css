@@ -1,3 +1,5 @@
+/* tt_thoma */
+
 /* Animations */
 @keyframes slide {
     from {
@@ -10,9 +12,7 @@
 
 /* Base */
 html {
-    * {
-        scrollbar-color: transparent transparent;
-    }
+    scrollbar-color: transparent transparent;
 }
 
 html,
@@ -178,7 +178,7 @@ li {
 .title_bar {
     display: flex;
     align-items: center;
-    font-family: "Nabla";
+    font-family: "Nabla", var(--button-font-family);
     font-size: var(--title-font-size);
 }
 

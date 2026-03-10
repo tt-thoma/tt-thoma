@@ -8,22 +8,26 @@ const splashes = [
     "Is someone even looking at these?",
     "That cake is 100% real",
     "Hey chatgpt, center that div",
-    "I fix the website for the mobile user!!",
+    "I fix the website for the mobile user s!!",
     "\"AI will take your job\" yeah well can AI type this? Taumatawhakatangihangakoauauotamateaturipokakapikimaungahoronukupokaiwhenuakitanatahu",
     "There is a typo in the last splash. I win"
 ];
+
 const splashes_count = splashes.length;
 var current_splash = 0;
 
 var showing_full = true;
 var showing_sidenav = false;
 
-var timer = 0;
-var timer_id = null;
+var animation_timer = 0;
+var animation_timer_id;
 var title_req_id = 0;
 
 var loader_id;
+var url_params;
+var current_page;
 
+// Try loading the page earlier than what body.onload allows
 loader_id = setInterval(() => {
     try { onload(); clearInterval(loader_id); }
     catch {}
@@ -32,30 +36,41 @@ loader_id = setInterval(() => {
 function onload() {
     document.body.onresize();
     set_title("Loading...", true);
-    load_content_page("home");
+
+    parse_url();
+    if (url_params.has("page")) {
+        load_content_page(url_params.get("page"));
+    } else {
+        load_content_page("welcome");
+    }
+
     setInterval(change_footnote, 30_000);
+}
+
+function parse_url() {
+    url_params = new URLSearchParams(window.location.href.split("?")[1]);
 }
 
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function start_timer() {
-    stop_timer();
+function start_animation_timer() {
+    stop_animation_timer();
 
-    timer_id = setInterval(() => {
+    animation_timer_id = setInterval(() => {
         for (let i = 0; i < title_bar.children.length; i++) {
             title_bar.children[i].style.translate =
-                "0 " + (Math.sin(timer + i / 2) * 15 + "px");
+                "0 " + (Math.sin(animation_timer + i / 2) * 15 + "px");
         }
-        timer += 0.05;
+        animation_timer += 0.05;
     }, 20);
 }
 
-function stop_timer() {
-    if (timer_id) {
-        clearInterval(timer_id);
-        timer_id = null;
+function stop_animation_timer() {
+    if (animation_timer_id) {
+        clearInterval(animation_timer_id);
+        animation_timer_id = null;
     }
 }
 
@@ -72,7 +87,7 @@ async function set_title(title, immediate) {
         if (!immediate) { await sleep(50); }
     }
 
-    stop_timer();
+    stop_animation_timer();
     var letter = document.createElement("span");
 
     if (title_req_id != title_id) {
@@ -94,7 +109,7 @@ async function set_title(title, immediate) {
     }
     letter.remove();
 
-    start_timer();
+    start_animation_timer();
     for (let i = 0; i < title.length; i++) {
         if (!immediate) { await sleep(50); }
 
@@ -117,9 +132,13 @@ async function set_title(title, immediate) {
 }
 
 async function load_content_page(page, immediate) {
+    if (current_page == page) {
+        return;
+    }
+
     var info_req = await fetch("blog/" + page + "/");
     var page_req = await fetch("blog/" + page + "/page/");
-    var page = await page_req.text();
+    var page_text = await page_req.text();
 
     if (info_req.ok) {
         var page_info = await info_req.json();
@@ -132,8 +151,10 @@ async function load_content_page(page, immediate) {
     if (!immediate) {
         await sleep(1100);
     }
-    content.innerHTML = page;
+    content.innerHTML = page_text;
     content.style.translate = "0 0";
+
+    current_page = page;
 }
 
 async function set_footnote(note) {
