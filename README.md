@@ -21,8 +21,8 @@ Contact
 -------
 How to contact me:
 
-**Discord**: @tt_thoma
+**Discord**: @nnnaaomina
 
 **Scratch**: https://scratch.mit.edu/users/tt_thoma
 
-**Mail**: thom@tt-thoma.net
+**Mail**: naomimaoni@mail.com
